@@ -13,8 +13,8 @@ class SongController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected function validation(Request $request){
-        $request->validate([
+    protected function controlli($request){
+        return $request->validate([
             'titolo' => 'required',
             'genere' => 'required|max:50',
             'autore' => 'required|max:100',
@@ -49,13 +49,7 @@ class SongController extends Controller
      */
     public function store(Request $request, Song $song)
     {
-        $data = $request->validate([
-            'titolo' => 'required',
-            'genere' => 'required|max:50',
-            'autore' => 'required|max:100',
-            'anno' => 'required'
-        ]);
-
+        $data = $this->controlli($request);
         $song->fill($data);
         $song->save();
 
@@ -99,13 +93,7 @@ class SongController extends Controller
      */
     public function update(Request $request, Song $song)
     {
-        $data = $request->validate([
-            'titolo' => 'required',
-            'genere' => 'required|max:50',
-            'autore' => 'required|max:100',
-            'anno' => 'required'
-        ]);
-
+        $data = $this->controlli($request);
         $song->update($data);
 
         return redirect()->route('songs.index');
