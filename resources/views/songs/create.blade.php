@@ -17,25 +17,25 @@
     @method('POST')
         <div class="form-group">
             <label for="inputTitolo">Titolo</label>
-            <input name="titolo" type="text" class="form-control" id="inputTitolo">
+            <input name="titolo" type="text" class="form-control" id="inputTitolo" value="{{ old('titolo') }}">
         </div>
         <div class="form-group">
             <label for="inputAutore">Autore</label>
-            <input name="autore" type="text" class="form-control" id="inputAutore">
+            <input name="autore" type="text" class="form-control" id="inputAutore" value="{{ old('autore') }}">
         </div>
         <div class="form-group">
             <label for="inputGenere">Genere</label>
             <select name="genere" id="inputGenere">
                 <option value="">>--- seleziona ---<</option>
-                <option value="pop">Pop</option>
-                <option value="rock">Rock</option>
-                <option value="rap">Rap</option>
-                <option value="trap">Trap</option>
+                <option value="pop" {{ old('genere') == 'pop' ? 'selected=selected' : '' }}>Pop</option>
+                <option value="rock" {{ old('genere') == 'rock' ? 'selected=selected' : '' }}>Rock</option>
+                <option value="rap" {{ old('genere') == 'rap' ? 'selected=selected' : '' }}>Rap</option>
+                <option value="trap" {{ old('genere') == 'trap' ? 'selected=selected' : '' }}>Trap</option>
             </select>
         </div>
         <div class="form-group">
             <label for="inputAnno">Anno</label>
-            <input name="anno" type="text" class="form-control" id="inputAnno">
+            <input name="anno" type="text" class="form-control" id="inputAnno" value="{{ old('anno') }}">
         </div>
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>

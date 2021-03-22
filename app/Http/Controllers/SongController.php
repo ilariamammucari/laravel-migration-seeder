@@ -12,6 +12,16 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected function validation(Request $request){
+        $request->validate([
+            'titolo' => 'required',
+            'genere' => 'required|max:50',
+            'autore' => 'required|max:100',
+            'anno' => 'required'
+        ]);
+    }
+
     public function index()
     {
         $musica = Song::all();
